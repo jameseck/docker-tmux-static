@@ -2,7 +2,7 @@ FROM debian:stretch
 
 MAINTAINER James Eckersall <james.eckersall@gmail.com>
 
-ENV VERSION=2.6
+ARG VERSION=2.6
 
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install libevent-dev ncurses-dev build-essential wget g++ gcc git automake autoconf libtool pkg-config -y
