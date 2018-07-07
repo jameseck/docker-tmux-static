@@ -1,10 +1,12 @@
-from debian:stretch
+FROM debian:stretch
 
-maintainer Nate Jones <nate@endot.org>
+MAINTAINER James Eckersall <james.eckersall@gmail.com>
 
-run apt-get update
-run DEBIAN_FRONTEND=noninteractive apt-get install libevent-dev ncurses-dev build-essential wget g++ gcc git automake autoconf libtool pkg-config -y
-run mkdir /tmux
+ENV VERSION=2.6
 
-add build.sh /tmux/build.sh
-run bash -c "cd /tmux; chmod +x build.sh; bash ./build.sh"
+RUN apt-get update
+RUN DEBIAN_FRONTEND=noninteractive apt-get install libevent-dev ncurses-dev build-essential wget g++ gcc git automake autoconf libtool pkg-config -y
+RUN mkdir /tmux
+
+ADD build.sh /tmux/build.sh
+RUN bash -c "cd /tmux; chmod +x build.sh; bash ./build.sh"
